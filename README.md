@@ -4,6 +4,7 @@ I have to create multiple projects namely developer and production and then add 
 
 
 STEP 1
+
 I have created multiple projects named devproject and prodproject.As we create multiple projects to give flexibility to the client users and company to seprate there billling account and give seprate space to their workers to work on convinently ,etc.
 
 ![2](https://user-images.githubusercontent.com/67523396/112204321-8823bc80-8c39-11eb-92a2-e08fcac3254e.png)
@@ -11,12 +12,14 @@ I have created multiple projects named devproject and prodproject.As we create m
 
 
 STEP 2
+
 Linked both the projects with billing account.We have to link our projects with billing account to take the services served by google ,To every services there are many API(Application programming interface ) to give us services.
 
 ![4](https://user-images.githubusercontent.com/67523396/112204326-88bc5300-8c39-11eb-9c1f-0edbaf528c39.png)
 
 
 STEP 3
+
 Created VPC network for both the projects .As we created Vpc network ,firewall will not allow other ip to enter our OS ..So we add one more firewall rule with 0.0.0.0/0 ip and port=80 to allow every ip to enter our OS and just take the services given by port no -80 in our OS ,so by default port no 80 gives the service of webserver but we can change it too by a small change in configuration file of the software which is allowing us to host our web server.
 
 ![5](https://user-images.githubusercontent.com/67523396/112204327-8954e980-8c39-11eb-8969-f5f5eec0dee4.png)
@@ -25,6 +28,7 @@ Created VPC network for both the projects .As we created Vpc network ,firewall w
 
 
 STEP 4
+
 Created a link between both the VPC networks using *VPC Peering*.Google provide us with two ip one public ip and 2nd private ip .As we know about public ip , private ip is something in which google provide us to use there network channel which is spread all over the world ,As it transfers our data safely and very fast .So an example to understand it more better , A Company development team is working on the data centre of region asia-southeast1(Jurong West,Singapore) in zone “b”and production team is working on the data centre of us-east1(Moncks Corner, South Carolina, USA) in zone “c” .So if they want to transfer there data which is very beneficial to the company they send it through private network provided by Google.
 
 ![8](https://user-images.githubusercontent.com/67523396/112204337-8b1ead00-8c39-11eb-85d7-dacea41a3e71.png)
@@ -33,6 +37,7 @@ Created a link between both the VPC networks using *VPC Peering*.Google provide 
 
 
 STEP 5
+
 Created a Kubernetes Cluster in devproject by adding three nodes in diffrent zones and launched wordpress on one of the deployment pod.Why deployment pod ?? it is because if by mistake a pod in which wordpress is launched is deleted then it launches a new pod with the same setting everything same ,then i made 5 more replicas of the pod to balance the load on the server …To balance the load on the server i had added Load Balancer service too and added load balancer on top of those 5 replicas .Here kubernetes works as a manager to manage everything.We have to configure Network setting and allow everyone to access port no 80 .
 
 ![10](https://user-images.githubusercontent.com/67523396/112204300-82c67200-8c39-11eb-935f-d4a2377b60bc.png)
@@ -43,6 +48,7 @@ Created a Kubernetes Cluster in devproject by adding three nodes in diffrent zon
 
 
 STEP 6
+
 Created a SQL server in the prodproject as sql service provides us with three more storage facilities MySQL ,PostgreSQL SQL Server …I moved further with MySQL service as i had to make a database so then i created an instance with password and then configured networking and created a database.
 
 ![14](https://user-images.githubusercontent.com/67523396/112204307-84903580-8c39-11eb-901a-56e8d9497e10.png)
@@ -52,6 +58,7 @@ Created a SQL server in the prodproject as sql service provides us with three mo
 
 
 STEP 7
+
 Connected the SQL database to the web application launched in the Kubernetes cluster.By ip of Load Balancer to the pods ,I opened wordpress and then added sql database name, then user name ie, root, then password of sql and then ip of sql instance .After the next page shows up we are connected …
 
 
